@@ -60,14 +60,14 @@ app.delete('/todos/:id', (req,res) => {
 
     Todo.findByIdAndRemove(id).then((todo) => {
       if (todo) {
-        res.send(todo);
+        res.send({todo});
       } else {
         res.status(404).send();
       }
     }).catch((e) => res.status(400).send());
 
   } else {
-    req.status(404).send();
+    res.status(404).send();
   }
 
 });
